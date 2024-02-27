@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Picker Example</title>
+    <!-- Include Web Font Loader and FontPicker CSS -->
+    <link href="https://printflo-kiteandcrest.s3.amazonaws.com/static/designtool/dist/jquery.fontpicker.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Your HTML Content -->
+    <div id="text" contenteditable="true" style="margin-top: 100px;">This is a sample text. Change me!</div>
+
+    <!-- Include Web Font Loader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js" integrity="sha512-v/wOVTkoU7mXEJC3hXnw9AA6v32qzpknvuUF6J2Lbkasxaxn2nYcl+HGB7fr/kChGfCqubVr1n2sq1UFu3Gh1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Include jQuery and FontPicker JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://printflo-kiteandcrest.s3.amazonaws.com/static/designtool/dist/jquery.fontpicker.min.js"></script>
+
+    <script>
+        // Initialize Web Font Loader
+        WebFont.load({
+            google: {
+                families: ['Roboto', 'Open Sans'] // Add your desired fonts here
+            }
+        });
+
+        // Initialize FontPicker
+        $(document).ready(function() {
+            $('#text').fontpicker({
+                change: function(font) {
+                    $('#text').css('font-family', font);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
