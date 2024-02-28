@@ -262,20 +262,31 @@
             $('#editor').append('<p class="draggable resizable" contenteditable="true">text</p>');
             makeDraggableResizable();
         }
-
         function addInputField() {
-            $('#editor').append('<div class="draggable resizable"><input type="text" placeholder="Input Field" contenteditable="true"></div>');
-            makeDraggableResizable();
+            var inputName = prompt("Enter the name for the text input:");
+            if (inputName !== null && inputName !== "") {
+                var inputField = '<div class="draggable resizable"><input type="text" placeholder="Text Input" contenteditable="true" name="' + inputName + '"></div>';
+                $('#editor').append(inputField);
+                makeDraggableResizable();
+            }
         }
         
         function addInputNumber() {
-            $('#editor').append('<div class="draggable resizable"><input type="number" placeholder="Input Number" contenteditable="true"></div>');
-            makeDraggableResizable();
+            var inputNumber = prompt("Enter the name for the number input:");
+            if (inputNumber !== null && inputNumber !== "") {
+                var inputField = '<div class="draggable resizable"><input type="number" placeholder="Number Input" contenteditable="true" name="' + inputNumber + '"></div>';
+                $('#editor').append(inputField);
+                makeDraggableResizable();
+            }
         }
 
         function addTextarea() {
-            $('#editor').append('<div class="draggable resizable"><textarea placeholder="Textarea" contenteditable="true"></textarea></div>');
-            makeDraggableResizable();
+            var textareaname = prompt("Enter the name for the number input:");
+            if (textareaname !== null && textareaname !== "") {
+                var inputField = '<div class="draggable resizable"><textarea placeholder="Textarea" contenteditable="true"  name="' + textareaname + '"></textarea></div>';
+                $('#editor').append(inputField);
+                makeDraggableResizable();
+            }
         }
 
         function addRadioField() {
@@ -383,14 +394,26 @@
             }
         }
         function saveHtml() {
-            $('.draggable').removeClass('ui-draggable');
-            $('[contenteditable="true"]').removeAttr('contenteditable');
-            var htmlContent = $('#editor').html();
-            makeDraggableResizable();
-            console.log(htmlContent);
-            $('#htmlContentTextarea').val(htmlContent);
-        }
-        function populateFontOptions() {
+    $('.draggable').removeClass('ui-draggable');
+    $('[contenteditable="true"]').removeAttr('contenteditable');
+
+    // Set the value attribute for input elements
+    $('#editor input').each(function() {
+        $(this).attr('value', $(this).val());
+    });
+
+    // Set the value attribute for textarea elements
+    $('#editor textarea').each(function() {
+        $(this).text($(this).val());
+    });
+
+    var htmlContent = $('#editor').html();
+    makeDraggableResizable();
+    console.log(htmlContent);
+    $('#htmlContentTextarea').val(htmlContent);
+}
+
+            function populateFontOptions() {
             var fontDropdown = $('#text-font');
             WebFont.load({
                 google: {
