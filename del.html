@@ -4,29 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Font Picker Example</title>
-    <!-- Include Web Font Loader and FontPicker CSS -->
+    <!-- Include Font Awesome for icons (optional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-vosfOkGPxJLnBQUgAqa6CIV7hl7UL/dJt2wI1qAMHuZOhJOVpfeZXUNlOYWBNTh/Zr//obZeqXZLuGxxZSzqYQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Include FontPicker CSS -->
     <link href="https://printflo-kiteandcrest.s3.amazonaws.com/static/designtool/dist/jquery.fontpicker.min.css" rel="stylesheet">
+    <style>
+        /* Optional: Style the editable text div */
+        #text {
+            margin-top: 100px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            min-height: 50px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
 
     <!-- Your HTML Content -->
-    <div id="text" contenteditable="true" style="margin-top: 100px;">This is a sample text. Change me!</div>
+    <div id="text" contenteditable="true">This is a sample text. Change me!</div>
 
-    <!-- Include Web Font Loader -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js" integrity="sha512-v/wOVTkoU7mXEJC3hXnw9AA6v32qzpknvuUF6J2Lbkasxaxn2nYcl+HGB7fr/kChGfCqubVr1n2sq1UFu3Gh1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <!-- Include jQuery and FontPicker JS -->
+    <!-- Include jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include FontPicker JS -->
     <script src="https://printflo-kiteandcrest.s3.amazonaws.com/static/designtool/dist/jquery.fontpicker.min.js"></script>
 
     <script>
-        // Initialize Web Font Loader
-        WebFont.load({
-            google: {
-                families: ['Roboto', 'Open Sans'] // Add your desired fonts here
-            }
-        });
-
         // Initialize FontPicker
         $(document).ready(function() {
             $('#text').fontpicker({
