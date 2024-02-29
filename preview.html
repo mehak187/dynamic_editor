@@ -59,10 +59,276 @@
 <body>
 
     <div class="mycontainer py-3">
-<input type="text" name="" id="">
+        <p class="draggable resizable ui-draggable-handle ui-resizable"
+            style="position: relative; font-family: Pacifico;">pacifico text lorem ipsum<br>
+        <div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;">
+        </div>
+        </p>
+        <p class="draggable resizable ui-draggable-handle ui-resizable selected"
+            style="position: relative; font-family: Orbitron;">pacifico text lorem ipsum<br>
+        <div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div>
+        <div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div>
+        <div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;">
+        </div>
+        </p>
+        <div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;">
+        </div>
+        <p></p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+
+        function populateFontOptions() {
+            var fontDropdown = $('#text-font');
+            WebFont.load({
+                google: {
+                    families: [
+                        'Abril Fatface',
+                        'Acme',
+                        'Amatic SC',
+                        'Amarante',
+                        'Arbutus',
+                        'Arimo',
+                        'Asap',
+                        'Averia Libre',
+                        'Baloo',
+                        'Barlow',
+                        'Barlow Condensed',
+                        'Bebas Neue',
+                        'Bellota',
+                        'BioRhyme',
+                        'Cairo',
+                        'Candal',
+                        'Cinzel',
+                        'Comfortaa',
+                        'Concert One',
+                        'Cormorant',
+                        'Crimson Text',
+                        'Cutive Mono',
+                        'Days One',
+                        'Didact Gothic',
+                        'DM Sans',
+                        'Dosis',
+                        'Economica',
+                        'Expletus Sans',
+                        'Fanwood Text',
+                        'Fira Sans',
+                        'Fjalla One',
+                        'Gentium Basic',
+                        'Gloria Hallelujah',
+                        'Gudea',
+                        'Halant',
+                        'Hammersmith One',
+                        'Heebo',
+                        'IBM Plex Sans',
+                        'IBM Plex Serif',
+                        'Ibarra Real Nova',
+                        'Inconsolata',
+                        'Inter',
+                        'Jura',
+                        'Josefin Sans',
+                        'Kalam',
+                        'Karla',
+                        'Khand',
+                        'KoHo',
+                        'Kode Mono',
+                        'Kreon',
+                        'Krub',
+                        'Lato',
+                        'Libre Franklin',
+                        'Lobster',
+                        'Lora',
+                        'Mada',
+                        'Marmelad',
+                        'Merriweather',
+                        'Merriweather Sans',
+                        'Montserrat',
+                        'Montserrat Subrayada',
+                        'Nanum Gothic',
+                        'Nanum Myeongjo',
+                        'News Cycle',
+                        'Nixie One',
+                        'Nunito',
+                        'Nunito Sans',
+                        'Old Standard TT',
+                        'Open Sans',
+                        'Orbitron',
+                        'Overpass',
+                        'Pacifico',
+                        'Patua One',
+                        'Philosopher',
+                        'Play',
+                        'Podkova',
+                        'Poppins',
+                        'Proza Libre',
+                        'Quantico',
+                        'Questrial',
+                        'Quicksand',
+                        'Quattrocento',
+                        'Rakkas',
+                        'Rambla',
+                        'Raleway',
+                        'Rasa',
+                        'Rhodium Libre',
+                        'Roboto',
+                        'Roboto Mono',
+                        'Rock Salt',
+                        'Saira',
+                        'Satisfy',
+                        'Shrikhand',
+                        'Source Sans Pro',
+                        'Spectral',
+                        'Tangerine',
+                        'Teko',
+                        'Tienne',
+                        'Tinos',
+                        'Trirong',
+                        'Ubuntu',
+                        'Ubuntu Condensed',
+                        'VT323',
+                        'Varela',
+                        'Varela Round',
+                        'Vollkorn',
+                        'Work Sans',
+                        'Yantramanav',
+                        'Yrsa',
+                        'Zilla Slab'
+                    ]
+                },
+                active: function () {
+                    fontDropdown.empty();
+                    var fontOptions = [
+                        'Abril Fatface',
+                        'Acme',
+                        'Amatic SC',
+                        'Amarante',
+                        'Arbutus',
+                        'Arimo',
+                        'Asap',
+                        'Averia Libre',
+                        'Baloo',
+                        'Barlow',
+                        'Barlow Condensed',
+                        'Bebas Neue',
+                        'Bellota',
+                        'BioRhyme',
+                        'Cairo',
+                        'Candal',
+                        'Cinzel',
+                        'Comfortaa',
+                        'Concert One',
+                        'Cormorant',
+                        'Crimson Text',
+                        'Cutive Mono',
+                        'Days One',
+                        'Didact Gothic',
+                        'DM Sans',
+                        'Dosis',
+                        'Economica',
+                        'Expletus Sans',
+                        'Fanwood Text',
+                        'Fira Sans',
+                        'Fjalla One',
+                        'Gentium Basic',
+                        'Gloria Hallelujah',
+                        'Gudea',
+                        'Halant',
+                        'Hammersmith One',
+                        'Heebo',
+                        'IBM Plex Sans',
+                        'IBM Plex Serif',
+                        'Ibarra Real Nova',
+                        'Inconsolata',
+                        'Inter',
+                        'Jura',
+                        'Josefin Sans',
+                        'Kalam',
+                        'Karla',
+                        'Khand',
+                        'KoHo',
+                        'Kode Mono',
+                        'Kreon',
+                        'Krub',
+                        'Lato',
+                        'Libre Franklin',
+                        'Lobster',
+                        'Lora',
+                        'Mada',
+                        'Marmelad',
+                        'Merriweather',
+                        'Merriweather Sans',
+                        'Montserrat',
+                        'Montserrat Subrayada',
+                        'Nanum Gothic',
+                        'Nanum Myeongjo',
+                        'News Cycle',
+                        'Nixie One',
+                        'Nunito',
+                        'Nunito Sans',
+                        'Old Standard TT',
+                        'Open Sans',
+                        'Orbitron',
+                        'Overpass',
+                        'Pacifico',
+                        'Patua One',
+                        'Philosopher',
+                        'Play',
+                        'Podkova',
+                        'Poppins',
+                        'Proza Libre',
+                        'Quantico',
+                        'Questrial',
+                        'Quicksand',
+                        'Quattrocento',
+                        'Rakkas',
+                        'Rambla',
+                        'Raleway',
+                        'Rasa',
+                        'Rhodium Libre',
+                        'Roboto',
+                        'Roboto Mono',
+                        'Rock Salt',
+                        'Saira',
+                        'Satisfy',
+                        'Shrikhand',
+                        'Source Sans Pro',
+                        'Spectral',
+                        'Tangerine',
+                        'Teko',
+                        'Tienne',
+                        'Tinos',
+                        'Trirong',
+                        'Ubuntu',
+                        'Ubuntu Condensed',
+                        'VT323',
+                        'Varela',
+                        'Varela Round',
+                        'Vollkorn',
+                        'Work Sans',
+                        'Yantramanav',
+                        'Yrsa',
+                        'Zilla Slab'
+                    ];
+                    fontOptions.sort();
+                    var uniqueFontOptions = fontOptions.filter((value, index, self) => {
+                        return self.indexOf(value) === index;
+                    });
+                    uniqueFontOptions.forEach(function (font) {
+                        fontDropdown.append('<option value="' + font + '">' + font + '</option>');
+                    });
+                }
+            });
+        }
+        $(document).ready(function () {
+            populateFontOptions();
+            $('#text-font').change(function () {
+                $('.selected').css('font-family', $(this).val());
+            });
+        });
+
+    </script>
 </body>
 
 </html>
