@@ -117,7 +117,7 @@
         <div class="d-flex flex-wrap justify-content-center">
             <button class="btn btn-secondary mx-1 my-2" id="add-image-btn"><i class="fa-solid fa-image"></i></button>
             <button class="btn btn-secondary mx-1 my-2" onclick="addText()"><i class="fa-solid fa-t"></i></button>
-            <button class="btn btn-secondary mx-1 my-2" onclick="addInputField()">Input</button>
+            <button class="btn btn-secondary mx-1 my-2" onclick="addInputField()">Text Input</button>
             <button class="btn btn-secondary mx-1 my-2" onclick="addInputNumber()">Number Input</button>
             <button class="btn btn-secondary mx-1 my-2" onclick="addTextarea()">Textarea</button>
             <!-- <button class="btn btn-secondary mx-1 my-2" onclick="addSelectField()">Select Field</button> -->
@@ -300,15 +300,18 @@
         }
 
         function addTable() {
-            var table = '<table class="draggable resizable">';
-            table += '<tr><td contenteditable="true"></td><td contenteditable="true"></td></tr>';
-            table += '</table>';
-            $('#editor').append(table);
-            makeDraggableResizable();
-            makeColumnsResizable();
-            $('.draggable.resizable').on('input', 'td', function () {
-                $(this).text($(this).text().trim());
-            });
+            var tableName = prompt("Enter the name for the table:");
+            if (tableName !== null && tableName !== "") {
+                var table = '<table class="draggable resizable" type="array" name="' + tableName + '">';
+                table += '<tr><td contenteditable="true"></td><td contenteditable="true"></td></tr>';
+                table += '</table>';
+                $('#editor').append(table);
+                makeDraggableResizable();
+                makeColumnsResizable();
+                $('.draggable.resizable').on('input', 'td', function() {
+                    $(this).text($(this).text().trim());
+                });
+            }
         }
 
         function addRow() {
