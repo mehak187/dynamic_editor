@@ -267,7 +267,7 @@
         function addInputField() {
             var inputName = prompt("Enter the name for the text input:");
             if (inputName !== null && inputName !== "") {
-                var inputField = '<div class="draggable resizable"><input type="text" placeholder="Text Input" contenteditable="true" name="' + inputName + '"></div>';
+                var inputField = '<div class="draggable resizable"><input type="text" placeholder="Text Input" contenteditable="true" name="' + inputName + '" readonly></div>';
                 $('#editor').append(inputField);
                 makeDraggableResizable();
             }
@@ -276,7 +276,7 @@
         function addInputNumber() {
             var inputNumber = prompt("Enter the name for the number input:");
             if (inputNumber !== null && inputNumber !== "") {
-                var inputField = '<div class="draggable resizable"><input type="number" placeholder="Number Input" contenteditable="true" name="' + inputNumber + '"></div>';
+                var inputField = '<div class="draggable resizable"><input type="number" placeholder="Number Input" contenteditable="true" name="' + inputNumber + '" readonly></div>';
                 $('#editor').append(inputField);
                 makeDraggableResizable();
             }
@@ -302,29 +302,40 @@
         }
 
         function addTable() {
-            var tableName = prompt("Enter the name for the table:");
-            if (tableName !== null && tableName !== "") {
-                var table = '<table class="draggable resizable" type="array" name="' + tableName + '">';
-                table += '<tr><td contenteditable="true"></td><td contenteditable="true"></td></tr>';
-                table += '</table>';
-                $('#editor').append(table);
-                makeDraggableResizable();
-                makeColumnsResizable();
-                $('.draggable.resizable').on('input', 'td', function () {
-                    $(this).text($(this).text().trim());
-                });
-            }
-        }
+    var tableName = prompt("Enter the name for the table:");
+    if (tableName !== null && tableName !== "") {
+        var table = '<table class="draggable resizable" type="array" name="' + tableName + '">';
+        table += '<thead><tr><th contenteditable="true">Header 1</th><th contenteditable="true">Header 2</th></tr></thead>';
+        table += '<tbody></tbody>'; // Add empty tbody for additional rows
+        table += '</table>';
+        $('#editor').append(table);
+        makeDraggableResizable();
+        makeColumnsResizable();
+        $('.draggable.resizable').on('input', 'td', function () {
+            $(this).text($(this).text().trim());
+        });
+    }
+}
 
-        function addRow() {
-            $('.draggable.resizable').append('<tr><td contenteditable="true"></td><td contenteditable="true"></td></tr>');
-        }
+function addRow() {
+    var numColumns = $('.draggable.resizable thead tr:first th').length;
+    var newRow = $('<tr></tr>');
+    for (var i = 0; i < numColumns; i++) {
+        newRow.append('<td></td>');
+    }
+    $('.draggable.resizable tbody').append(newRow);
+}
+function addColumn() {
+    // Add a new column to the table
+    var table = $('.draggable.resizable');
+    table.find('thead tr').append('<th contenteditable="true">Header</th>');
 
-        function addColumn() {
-            // Add a new column to the table
-            $('.draggable.resizable tr').append('<td contenteditable="true"></td>');
-            makeColumnsResizable(); // Make the new column resizable
-        }
+    // Add a new cell under the <tbody> for each existing row
+    table.find('tbody tr').append('<td contenteditable="true"></td>');
+
+    makeColumnsResizable(); // Make the new column resizable
+}
+
 
         function makeDraggableResizable() {
             $('.draggable').draggable({
